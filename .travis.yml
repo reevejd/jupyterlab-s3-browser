@@ -15,6 +15,7 @@ before_install:
   - source "$HOME/miniconda/etc/profile.d/conda.sh"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
+  - conda config --set restore_free_channel true
   - conda update -q conda
   - conda info -a
 install:
