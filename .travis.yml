@@ -7,7 +7,7 @@ cache:
   directories:
     - node_modules
 before_install:
-  - nvm use 8
+  - nvm use 10
 install:
   - yarn install
   - yarn run build
