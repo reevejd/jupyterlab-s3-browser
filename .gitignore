@@ -13,3 +13,4 @@ jupyterlab_s3_browser.egg-info/
 .jupyterlab/
 *.ipynb
 .coverage
+htmlcov/
