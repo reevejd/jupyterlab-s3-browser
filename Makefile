@@ -6,10 +6,9 @@ PYTHON_PACKAGE_NAME=jupyterlab_s3_browser
 
 default: setup
 
-setup: clean setup_conda_env build_lab_extension install_lab_extension
+setup: setup_conda_env build_lab_extension install_lab_extension
 
-setup_conda_env:
-	@conda env remove -n $(CONDA_ENV_NAME)
+setup_conda_env: clean
 	@conda env create -f environment.yml
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME)
 
