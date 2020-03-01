@@ -29,7 +29,7 @@ run:
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && jupyter lab --watch
 
 test:
-	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && coverage run -m pytest $(PYTHON_PACKAGE_NAME) && coverage html && coverage report --fail-under 50
+	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && coverage run -m pytest $(PYTHON_PACKAGE_NAME) && coverage report --fail-under 50
 
 clean:
 	@echo "cleaning up any existing environment"
