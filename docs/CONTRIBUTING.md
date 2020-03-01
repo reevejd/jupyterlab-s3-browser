@@ -13,15 +13,7 @@ Contributions to this extension are welcome.
 
 ### Development
 
-- Make sure you have the correct version of JupyterLab installed:
-
-```
-conda install -c conda-forge jupyterlab==1.2.3
-```
-
-- install dependencies and build: `yarn install && yarn run build`
-- install the lab extension: `jupyter labextension link .`
-- install the server extension: `pip install .`
+- Run `make setup` to prepare your development environment.
 - To watch and automatically rebuild the lab extension run `yarn run watch`
 - In a separate terminal window, run `jupyter lab --watch` to start jupyterlab.
 - Changes to the lab extension will trigger automatic rebuilds of the extension as you make changes.

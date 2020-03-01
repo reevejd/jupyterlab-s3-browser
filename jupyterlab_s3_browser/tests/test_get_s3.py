@@ -60,4 +60,6 @@ def test_get_files_inside_bucket():
         },
     ]
     print(result)
-    assert result == expected_result
+    assert sorted(result, key=lambda i: i["name"]) == sorted(
+        expected_result, key=lambda i: i["name"]
+    )
