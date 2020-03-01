@@ -33,6 +33,7 @@ test:
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && coverage run -m pytest $(PYTHON_PACKAGE_NAME) && coverage html && coverage report --fail-under 50
 
 clean:
-	@conda env remove -n $(CONDA_ENV_NAME)
+	@echo "cleaning up any existing environment"
+	@conda env remove -n $(CONDA_ENV_NAME) || echo "no existing conda environment"
 	@rm -rf node_modules/
-	@echo "cleaned!"
+	@echo "finished cleaning"
