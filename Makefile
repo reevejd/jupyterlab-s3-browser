@@ -6,7 +6,7 @@ PYTHON_PACKAGE_NAME=jupyterlab_s3_browser
 
 default: setup
 
-setup: setup_conda_env build_lab_extension install_lab_extension
+setup: clean setup_conda_env build_lab_extension install_lab_extension
 
 setup_conda_env:
 	@conda env remove -n $(CONDA_ENV_NAME)
@@ -29,8 +29,8 @@ dev: install_lab_extension install_server_extension
 run:
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && jupyter lab --watch
 
-test: setup
-	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && coverage run -m pytest $(PYTHON_PACKAGE_NAME) && coverage html && coverage report --fail-under 80
+test:
+	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && coverage run -m pytest $(PYTHON_PACKAGE_NAME) && coverage html && coverage report --fail-under 50
 
 clean:
 	@conda env remove -n $(CONDA_ENV_NAME)
