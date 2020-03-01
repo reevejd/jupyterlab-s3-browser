@@ -18,11 +18,16 @@ build_lab_extension:
 	@yarn run build
 
 install_lab_extension: build_lab_extension
-	@echo "extension not compatible"
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && jupyter labextension link .
 
 install_server_extension:
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && pip install . && jupyter labextension link . && jupyter serverextension enable --py $(PYTHON_PACKAGE_NAME)
+
+dev: install_lab_extension install_server_extension
+	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && yarn run watch
+
+run:
+	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && jupyter lab --watch
 
 test: setup
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && coverage run -m pytest $(PYTHON_PACKAGE_NAME) && coverage report --fail-under 80
