@@ -19,13 +19,15 @@ build_lab_extension:
 
 install_lab_extension: build_lab_extension
 	@echo "extension not compatible"
-	# @$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && jupyter labextension link .
+	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && jupyter labextension link .
 
 install_server_extension:
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && pip install . && jupyter labextension link . && jupyter serverextension enable --py $(PYTHON_PACKAGE_NAME)
 
-exportenv:
-	@conda env export > environment.yml
-
-test:
+test: setup
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && coverage run -m pytest $(PYTHON_PACKAGE_NAME) && coverage report --fail-under 80
+
+clean:
+	@conda env remove -n $(CONDA_ENV_NAME)
+	@rm -rf node_modules/
+	@echo "cleaned!"
