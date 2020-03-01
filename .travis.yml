@@ -7,7 +7,7 @@ cache:
   directories:
     - node_modules
 before_install:
-  - npm install npm@8 -g
+  - nvm use 8
 install:
   - yarn install
   - yarn run build
