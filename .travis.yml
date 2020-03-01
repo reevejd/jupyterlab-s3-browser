@@ -6,6 +6,8 @@ cache:
   pip: true
   directories:
     - node_modules
+before_install:
+  - npm install npm@8 -g
 install:
   - yarn install
   - yarn run build
