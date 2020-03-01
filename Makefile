@@ -29,14 +29,7 @@ dev: install_lab_extension install_server_extension
 run:
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && jupyter lab --watch
 
-test: setup serverextension_test labextension_test
-
-labextension_test:
-	@echo "Running labextension test"
-	@echo "not yet implemented"
-
-serverextension_test:
-	@echo "Running serverextension test"
+test: setup
 	@$(CONDA_ACTIVATE) $(CONDA_ENV_NAME) && coverage run -m pytest $(PYTHON_PACKAGE_NAME) && coverage report --fail-under 80
 
 clean:
