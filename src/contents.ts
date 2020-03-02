@@ -88,6 +88,7 @@ export class S3Drive implements Contents.IDrive {
    * path if necessary.
    */
   getDownloadUrl(path: string): Promise<string> {
+    console.log("get dl url");
     return Promise.reject("Not yet implemented");
   }
 
@@ -100,6 +101,7 @@ export class S3Drive implements Contents.IDrive {
    *    file is created.
    */
   newUntitled(options: Contents.ICreateOptions = {}): Promise<Contents.IModel> {
+    console.log(options);
     return Promise.reject("Not yet implemented");
   }
 

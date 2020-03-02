@@ -1,5 +1,7 @@
 import { PanelLayout, Widget } from "@lumino/widgets";
 
+import { Message } from "@lumino/messaging";
+
 import { FileBrowser } from "@jupyterlab/filebrowser";
 
 import { S3Drive } from "./contents";
@@ -87,6 +89,25 @@ export class S3FileBrowser extends Widget {
         (this.layout as PanelLayout).addWidget(s3AuthenticationForm);
       }
     });
+  }
+
+  protected onAfterAttach(msg: Message): void {
+    this.node.addEventListener("contextmenu", this);
+    // this.node.addEventListener('contextmenu', () => {
+    // console.log('context menu!');
+    // });
+    super.onAfterAttach(msg);
+  }
+
+  handleEvent(event: Event): void {
+    console.log(event);
+    switch (event.type) {
+      case "contextmenu":
+        console.log("handle contextmenu");
+        break;
+      default:
+        break;
+    }
   }
 }
 
